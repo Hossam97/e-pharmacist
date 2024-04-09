@@ -17,5 +17,7 @@ const medicationSchema = mongoose.Schema({
     consultation: String
 });
 
+medicationSchema.index({brandName: 'text', genericName: 'text'})
+
 const Medication = mongoose.model('Medication', medicationSchema);
 module.exports = Medication;

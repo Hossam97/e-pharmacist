@@ -5,10 +5,13 @@ const {
   getMedication,
   deleteMedication,
   getAllMedications,
+  searchMedication,
 } = require("../controllers/medicationsController");
 const router = express.Router();
 
 router.route("/").get(getAllMedications).post(addMedication);
+
+router.route('/search').get(searchMedication)
 
 router
   .route("/:id")
