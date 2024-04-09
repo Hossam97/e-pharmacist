@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const usersRouter = require('./routes/usersRouter');
+const medicationsRouter = require('./routes/medicationsRouter');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const appError = require('./utils/appError');
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/medications', medicationsRouter);
 
 app.all('*', (req, res, next) => {
     next(new appError(`Can't find ${req.originalUrl} on the server`, 404))
