@@ -14,7 +14,8 @@ const medicationSchema = mongoose.Schema({
     dosage: String,
     administration: String,
     warning: String,
-    consultation: String
+    consultation: String,
+    isOTC: {type: Boolean, default: false}
 });
 
 medicationSchema.index({brandName: 'text', genericName: 'text'})
