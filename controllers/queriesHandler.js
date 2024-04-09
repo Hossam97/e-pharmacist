@@ -39,12 +39,13 @@ exports.getOne = (Model) => async (req, res, next) => {
 
 exports.getAll = (Model) => async (req, res, next) => {
   const docs = await Model.find();
-  if (!docs) {
-    return next(new appError("No medication found with the provided ID", 404));
+  if (docs.length === 0) {
+    return next(new appError("No medications available", 404));
   }
 
   res.status(200).json({
     status: "success",
+    results: docs.length,
     data: docs,
   });
 };
