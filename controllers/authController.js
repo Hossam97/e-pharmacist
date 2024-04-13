@@ -4,8 +4,10 @@ const appError = require("../utils/appError");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
+// TODO: implement a controller to verify the current user's token and make sure
+// it is not expired
+
 const signToken = (userID) => {
-  console.log("SECRET: ", process.env.JWT_SECRET);
   return jwt.sign({ id: userID }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRY,
   });
